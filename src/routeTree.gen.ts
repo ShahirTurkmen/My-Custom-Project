@@ -16,9 +16,6 @@ import { Route as ExampleChatImport } from './routes/example.chat'
 import { Route as DemoTanstackQueryImport } from './routes/demo.tanstack-query'
 import { Route as DemoTableImport } from './routes/demo.table'
 import { Route as DemoStoreImport } from './routes/demo.store'
-import { Route as ExampleGuitarsIndexImport } from './routes/example.guitars/index'
-import { Route as ExampleGuitarsGuitarIdImport } from './routes/example.guitars/$guitarId'
-import { Route as DemoStartServerFuncsImport } from './routes/demo.start.server-funcs'
 import { Route as DemoStartApiRequestImport } from './routes/demo.start.api-request'
 import { Route as DemoFormSimple1Import } from './routes/demo.form.simple1'
 import { Route as DemoFormSimpleImport } from './routes/demo.form.simple'
@@ -53,24 +50,6 @@ const DemoTableRoute = DemoTableImport.update({
 const DemoStoreRoute = DemoStoreImport.update({
   id: '/demo/store',
   path: '/demo/store',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ExampleGuitarsIndexRoute = ExampleGuitarsIndexImport.update({
-  id: '/example/guitars/',
-  path: '/example/guitars/',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const ExampleGuitarsGuitarIdRoute = ExampleGuitarsGuitarIdImport.update({
-  id: '/example/guitars/$guitarId',
-  path: '/example/guitars/$guitarId',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoStartServerFuncsRoute = DemoStartServerFuncsImport.update({
-  id: '/demo/start/server-funcs',
-  path: '/demo/start/server-funcs',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -165,27 +144,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoStartApiRequestImport
       parentRoute: typeof rootRoute
     }
-    '/demo/start/server-funcs': {
-      id: '/demo/start/server-funcs'
-      path: '/demo/start/server-funcs'
-      fullPath: '/demo/start/server-funcs'
-      preLoaderRoute: typeof DemoStartServerFuncsImport
-      parentRoute: typeof rootRoute
-    }
-    '/example/guitars/$guitarId': {
-      id: '/example/guitars/$guitarId'
-      path: '/example/guitars/$guitarId'
-      fullPath: '/example/guitars/$guitarId'
-      preLoaderRoute: typeof ExampleGuitarsGuitarIdImport
-      parentRoute: typeof rootRoute
-    }
-    '/example/guitars/': {
-      id: '/example/guitars/'
-      path: '/example/guitars'
-      fullPath: '/example/guitars'
-      preLoaderRoute: typeof ExampleGuitarsIndexImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -201,9 +159,6 @@ export interface FileRoutesByFullPath {
   '/demo/form/simple': typeof DemoFormSimpleRoute
   '/demo/form/simple1': typeof DemoFormSimple1Route
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
-  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
-  '/example/guitars/$guitarId': typeof ExampleGuitarsGuitarIdRoute
-  '/example/guitars': typeof ExampleGuitarsIndexRoute
 }
 
 export interface FileRoutesByTo {
@@ -216,9 +171,6 @@ export interface FileRoutesByTo {
   '/demo/form/simple': typeof DemoFormSimpleRoute
   '/demo/form/simple1': typeof DemoFormSimple1Route
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
-  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
-  '/example/guitars/$guitarId': typeof ExampleGuitarsGuitarIdRoute
-  '/example/guitars': typeof ExampleGuitarsIndexRoute
 }
 
 export interface FileRoutesById {
@@ -232,9 +184,6 @@ export interface FileRoutesById {
   '/demo/form/simple': typeof DemoFormSimpleRoute
   '/demo/form/simple1': typeof DemoFormSimple1Route
   '/demo/start/api-request': typeof DemoStartApiRequestRoute
-  '/demo/start/server-funcs': typeof DemoStartServerFuncsRoute
-  '/example/guitars/$guitarId': typeof ExampleGuitarsGuitarIdRoute
-  '/example/guitars/': typeof ExampleGuitarsIndexRoute
 }
 
 export interface FileRouteTypes {
@@ -249,9 +198,6 @@ export interface FileRouteTypes {
     | '/demo/form/simple'
     | '/demo/form/simple1'
     | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
-    | '/example/guitars/$guitarId'
-    | '/example/guitars'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -263,9 +209,6 @@ export interface FileRouteTypes {
     | '/demo/form/simple'
     | '/demo/form/simple1'
     | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
-    | '/example/guitars/$guitarId'
-    | '/example/guitars'
   id:
     | '__root__'
     | '/'
@@ -277,9 +220,6 @@ export interface FileRouteTypes {
     | '/demo/form/simple'
     | '/demo/form/simple1'
     | '/demo/start/api-request'
-    | '/demo/start/server-funcs'
-    | '/example/guitars/$guitarId'
-    | '/example/guitars/'
   fileRoutesById: FileRoutesById
 }
 
@@ -293,9 +233,6 @@ export interface RootRouteChildren {
   DemoFormSimpleRoute: typeof DemoFormSimpleRoute
   DemoFormSimple1Route: typeof DemoFormSimple1Route
   DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
-  DemoStartServerFuncsRoute: typeof DemoStartServerFuncsRoute
-  ExampleGuitarsGuitarIdRoute: typeof ExampleGuitarsGuitarIdRoute
-  ExampleGuitarsIndexRoute: typeof ExampleGuitarsIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -308,9 +245,6 @@ const rootRouteChildren: RootRouteChildren = {
   DemoFormSimpleRoute: DemoFormSimpleRoute,
   DemoFormSimple1Route: DemoFormSimple1Route,
   DemoStartApiRequestRoute: DemoStartApiRequestRoute,
-  DemoStartServerFuncsRoute: DemoStartServerFuncsRoute,
-  ExampleGuitarsGuitarIdRoute: ExampleGuitarsGuitarIdRoute,
-  ExampleGuitarsIndexRoute: ExampleGuitarsIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -331,10 +265,7 @@ export const routeTree = rootRoute
         "/demo/form/address",
         "/demo/form/simple",
         "/demo/form/simple1",
-        "/demo/start/api-request",
-        "/demo/start/server-funcs",
-        "/example/guitars/$guitarId",
-        "/example/guitars/"
+        "/demo/start/api-request"
       ]
     },
     "/": {
@@ -363,15 +294,6 @@ export const routeTree = rootRoute
     },
     "/demo/start/api-request": {
       "filePath": "demo.start.api-request.tsx"
-    },
-    "/demo/start/server-funcs": {
-      "filePath": "demo.start.server-funcs.tsx"
-    },
-    "/example/guitars/$guitarId": {
-      "filePath": "example.guitars/$guitarId.tsx"
-    },
-    "/example/guitars/": {
-      "filePath": "example.guitars/index.tsx"
     }
   }
 }
