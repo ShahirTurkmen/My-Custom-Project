@@ -11,17 +11,17 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as EditorImport } from './routes/editor'
 import { Route as IndexImport } from './routes/index'
 import { Route as ExampleChatImport } from './routes/example.chat'
-import { Route as DemoTanstackQueryImport } from './routes/demo.tanstack-query'
-import { Route as DemoTableImport } from './routes/demo.table'
-import { Route as DemoStoreImport } from './routes/demo.store'
-import { Route as DemoStartApiRequestImport } from './routes/demo.start.api-request'
-import { Route as DemoFormSimple1Import } from './routes/demo.form.simple1'
-import { Route as DemoFormSimpleImport } from './routes/demo.form.simple'
-import { Route as DemoFormAddressImport } from './routes/demo.form.address'
 
 // Create/Update Routes
+
+const EditorRoute = EditorImport.update({
+  id: '/editor',
+  path: '/editor',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
@@ -32,48 +32,6 @@ const IndexRoute = IndexImport.update({
 const ExampleChatRoute = ExampleChatImport.update({
   id: '/example/chat',
   path: '/example/chat',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoTanstackQueryRoute = DemoTanstackQueryImport.update({
-  id: '/demo/tanstack-query',
-  path: '/demo/tanstack-query',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoTableRoute = DemoTableImport.update({
-  id: '/demo/table',
-  path: '/demo/table',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoStoreRoute = DemoStoreImport.update({
-  id: '/demo/store',
-  path: '/demo/store',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoStartApiRequestRoute = DemoStartApiRequestImport.update({
-  id: '/demo/start/api-request',
-  path: '/demo/start/api-request',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoFormSimple1Route = DemoFormSimple1Import.update({
-  id: '/demo/form/simple1',
-  path: '/demo/form/simple1',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoFormSimpleRoute = DemoFormSimpleImport.update({
-  id: '/demo/form/simple',
-  path: '/demo/form/simple',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const DemoFormAddressRoute = DemoFormAddressImport.update({
-  id: '/demo/form/address',
-  path: '/demo/form/address',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -88,25 +46,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/demo/store': {
-      id: '/demo/store'
-      path: '/demo/store'
-      fullPath: '/demo/store'
-      preLoaderRoute: typeof DemoStoreImport
-      parentRoute: typeof rootRoute
-    }
-    '/demo/table': {
-      id: '/demo/table'
-      path: '/demo/table'
-      fullPath: '/demo/table'
-      preLoaderRoute: typeof DemoTableImport
-      parentRoute: typeof rootRoute
-    }
-    '/demo/tanstack-query': {
-      id: '/demo/tanstack-query'
-      path: '/demo/tanstack-query'
-      fullPath: '/demo/tanstack-query'
-      preLoaderRoute: typeof DemoTanstackQueryImport
+    '/editor': {
+      id: '/editor'
+      path: '/editor'
+      fullPath: '/editor'
+      preLoaderRoute: typeof EditorImport
       parentRoute: typeof rootRoute
     }
     '/example/chat': {
@@ -116,34 +60,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExampleChatImport
       parentRoute: typeof rootRoute
     }
-    '/demo/form/address': {
-      id: '/demo/form/address'
-      path: '/demo/form/address'
-      fullPath: '/demo/form/address'
-      preLoaderRoute: typeof DemoFormAddressImport
-      parentRoute: typeof rootRoute
-    }
-    '/demo/form/simple': {
-      id: '/demo/form/simple'
-      path: '/demo/form/simple'
-      fullPath: '/demo/form/simple'
-      preLoaderRoute: typeof DemoFormSimpleImport
-      parentRoute: typeof rootRoute
-    }
-    '/demo/form/simple1': {
-      id: '/demo/form/simple1'
-      path: '/demo/form/simple1'
-      fullPath: '/demo/form/simple1'
-      preLoaderRoute: typeof DemoFormSimple1Import
-      parentRoute: typeof rootRoute
-    }
-    '/demo/start/api-request': {
-      id: '/demo/start/api-request'
-      path: '/demo/start/api-request'
-      fullPath: '/demo/start/api-request'
-      preLoaderRoute: typeof DemoStartApiRequestImport
-      parentRoute: typeof rootRoute
-    }
   }
 }
 
@@ -151,100 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/demo/store': typeof DemoStoreRoute
-  '/demo/table': typeof DemoTableRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/editor': typeof EditorRoute
   '/example/chat': typeof ExampleChatRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
-  '/demo/form/simple1': typeof DemoFormSimple1Route
-  '/demo/start/api-request': typeof DemoStartApiRequestRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/demo/store': typeof DemoStoreRoute
-  '/demo/table': typeof DemoTableRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/editor': typeof EditorRoute
   '/example/chat': typeof ExampleChatRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
-  '/demo/form/simple1': typeof DemoFormSimple1Route
-  '/demo/start/api-request': typeof DemoStartApiRequestRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/demo/store': typeof DemoStoreRoute
-  '/demo/table': typeof DemoTableRoute
-  '/demo/tanstack-query': typeof DemoTanstackQueryRoute
+  '/editor': typeof EditorRoute
   '/example/chat': typeof ExampleChatRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
-  '/demo/form/simple1': typeof DemoFormSimple1Route
-  '/demo/start/api-request': typeof DemoStartApiRequestRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/demo/store'
-    | '/demo/table'
-    | '/demo/tanstack-query'
-    | '/example/chat'
-    | '/demo/form/address'
-    | '/demo/form/simple'
-    | '/demo/form/simple1'
-    | '/demo/start/api-request'
+  fullPaths: '/' | '/editor' | '/example/chat'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/demo/store'
-    | '/demo/table'
-    | '/demo/tanstack-query'
-    | '/example/chat'
-    | '/demo/form/address'
-    | '/demo/form/simple'
-    | '/demo/form/simple1'
-    | '/demo/start/api-request'
-  id:
-    | '__root__'
-    | '/'
-    | '/demo/store'
-    | '/demo/table'
-    | '/demo/tanstack-query'
-    | '/example/chat'
-    | '/demo/form/address'
-    | '/demo/form/simple'
-    | '/demo/form/simple1'
-    | '/demo/start/api-request'
+  to: '/' | '/editor' | '/example/chat'
+  id: '__root__' | '/' | '/editor' | '/example/chat'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  DemoStoreRoute: typeof DemoStoreRoute
-  DemoTableRoute: typeof DemoTableRoute
-  DemoTanstackQueryRoute: typeof DemoTanstackQueryRoute
+  EditorRoute: typeof EditorRoute
   ExampleChatRoute: typeof ExampleChatRoute
-  DemoFormAddressRoute: typeof DemoFormAddressRoute
-  DemoFormSimpleRoute: typeof DemoFormSimpleRoute
-  DemoFormSimple1Route: typeof DemoFormSimple1Route
-  DemoStartApiRequestRoute: typeof DemoStartApiRequestRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  DemoStoreRoute: DemoStoreRoute,
-  DemoTableRoute: DemoTableRoute,
-  DemoTanstackQueryRoute: DemoTanstackQueryRoute,
+  EditorRoute: EditorRoute,
   ExampleChatRoute: ExampleChatRoute,
-  DemoFormAddressRoute: DemoFormAddressRoute,
-  DemoFormSimpleRoute: DemoFormSimpleRoute,
-  DemoFormSimple1Route: DemoFormSimple1Route,
-  DemoStartApiRequestRoute: DemoStartApiRequestRoute,
 }
 
 export const routeTree = rootRoute
@@ -258,42 +116,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/demo/store",
-        "/demo/table",
-        "/demo/tanstack-query",
-        "/example/chat",
-        "/demo/form/address",
-        "/demo/form/simple",
-        "/demo/form/simple1",
-        "/demo/start/api-request"
+        "/editor",
+        "/example/chat"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/demo/store": {
-      "filePath": "demo.store.tsx"
-    },
-    "/demo/table": {
-      "filePath": "demo.table.tsx"
-    },
-    "/demo/tanstack-query": {
-      "filePath": "demo.tanstack-query.tsx"
+    "/editor": {
+      "filePath": "editor.tsx"
     },
     "/example/chat": {
       "filePath": "example.chat.tsx"
-    },
-    "/demo/form/address": {
-      "filePath": "demo.form.address.tsx"
-    },
-    "/demo/form/simple": {
-      "filePath": "demo.form.simple.tsx"
-    },
-    "/demo/form/simple1": {
-      "filePath": "demo.form.simple1.tsx"
-    },
-    "/demo/start/api-request": {
-      "filePath": "demo.start.api-request.tsx"
     }
   }
 }

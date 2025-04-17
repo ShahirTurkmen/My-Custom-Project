@@ -1,6 +1,4 @@
-import { Link } from '@tanstack/react-router'
-
-// import TanchatHeader from '../integrations/tanchat/header-user'
+import { Link } from "@tanstack/react-router";
 
 export default function Header() {
   return (
@@ -9,11 +7,11 @@ export default function Header() {
         <div className="px-2 font-bold">
           <Link to="/">Home</Link>
         </div>
-      </nav>
 
-      {/* <div>
-        <TanchatHeader />
-      </div> */}
+        <div className="px-2 font-bold">
+          <Link to="/editor">Editor</Link>
+        </div>
+      </nav>
     </header>
-  )
+  );
 }
