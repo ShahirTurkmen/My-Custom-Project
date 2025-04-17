@@ -1,0 +1,21 @@
+{
+  "framework": "react",
+  "typescript": true,
+  "projectName": ".",
+  "mode": "file-router",
+  "tailwind": true,
+  "packageManager": "npm",
+  "toolchain": "none",
+  "variableValues": {},
+  "git": true,
+  "version": 1,
+  "existingAddOns": [
+    "form",
+    "store",
+    "t3env",
+    "table",
+    "tanstack-query",
+    "tanchat",
+    "start"
+  ]
+}
